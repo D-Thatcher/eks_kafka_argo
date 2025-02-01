@@ -18,6 +18,12 @@ proxy_argo:
 deploy_kafka_operator:
 	kubectl apply -f argo/kafka-operator.yaml
 
+deploy_kafka_cluster:
+	kubectl apply -f argo/kafka-cluster.yaml
+
+remove_kafka_cluster:
+	kubectl delete -f argo/kafka-cluster.yaml
+
 deploy_example_app:
 	kubectl apply -f argo/example.yaml
 

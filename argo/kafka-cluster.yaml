@@ -11,7 +11,7 @@ spec:
    path: 'k8s/kafka-cluster'
  destination:
    server: 'https://kubernetes.default.svc'
-   namespace: example-cluster
+   namespace: kafka
  syncPolicy:
    automated:
      prune: true
