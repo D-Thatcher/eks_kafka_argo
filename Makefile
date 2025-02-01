@@ -15,6 +15,9 @@ get_argo_secret:
 proxy_argo:
 	kubectl port-forward svc/argocd-server -n argocd 8080:443
 
+deploy_kafka_operator:
+	kubectl apply -f argo/kafka-operator.yaml
+
 deploy_example_app:
 	kubectl apply -f argo/example.yaml
 
