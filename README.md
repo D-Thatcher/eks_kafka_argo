@@ -12,4 +12,11 @@
     - remove the example app: `make remove_example_app`
 - deploy the Strimzi Kafka Operator: `make deploy_kafka_operator`
 - deploy an example Kafka cluster: `make deploy_kafka_cluster`
+
+## Note
+There's a known Argo + Strimzi [issue](https://github.com/orgs/strimzi/discussions/7205) with incorrectly reporting the state of the PVCs 
+To mitigate this, we've disabled auto-pruning for this Application. Do not manually prune the PVC even though Argo says it's out-of-sync.
+![Image of Kafka Cluster](/assets/cluster.png)
+
+## Clean up
 - clean up all resources, including the underlying kubernetes cluster: `make clean`
