@@ -15,7 +15,7 @@
 - deploy an example Kafka cluster: `make deploy_kafka_cluster`
 
 ## PVC Issue
-There's a known Argo + Strimzi [issue](https://github.com/orgs/strimzi/discussions/7205) with incorrectly reporting the state of the PVCs 
+There's a known Argo + Strimzi [issue](https://github.com/orgs/strimzi/discussions/7205) with incorrectly reporting the state of the PVCs.
 To mitigate this, we've disabled auto-pruning for this Application. Do not manually prune the PVC even though Argo says it's out-of-sync.
 ![Image of Kafka Cluster](/assets/cluster.png)
 
@@ -25,7 +25,7 @@ To mitigate this, we've disabled auto-pruning for this Application. Do not manua
 ![Image of Producer](/assets/producer.png)
 - run `make consume_messages` to create a consumer pod that will connect to the Kafka Cluster
 - the previous messages will appear in the terminal:
-![Image of Consumer](/assets/consumer.png)
+![Image of Consumer](/assets/consume.png)
 
 ## Clean up
 - clean up all resources, including the underlying kubernetes cluster: `make clean`
