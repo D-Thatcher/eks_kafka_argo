@@ -3,7 +3,7 @@ kind: KafkaNodePool
 metadata:
   name: dual-role
   labels:
-    strimzi.io/cluster: example-cluster
+    strimzi.io/cluster: test-cluster
 spec:
   replicas: 1
   template:
@@ -29,7 +29,7 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
-  name: example-cluster
+  name: test-cluster
   annotations:
     strimzi.io/node-pools: enabled
     strimzi.io/kraft: enabled
