@@ -6,6 +6,12 @@ metadata:
     strimzi.io/cluster: kafka-cluster
 spec:
   replicas: 1
+  template:
+      persistentVolumeClaim:
+        metadata:
+          annotations:
+            argocd.argoproj.io/compare-options: IgnoreExtraneous
+            argocd.argoproj.io/sync-options: Prune=false
   roles:
     - controller
     - broker
@@ -31,6 +37,12 @@ spec:
   kafka:
     version: 3.9.0
     metadataVersion: 3.9-IV0
+    template:
+      persistentVolumeClaim:
+        metadata:
+          annotations:
+            argocd.argoproj.io/compare-options: IgnoreExtraneous
+            argocd.argoproj.io/sync-options: Prune=false
     listeners:
       - name: plain
         port: 9092
