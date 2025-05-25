@@ -62,6 +62,9 @@ deploy_example_local_app:
 get_example_local_app_url:
 	kubectl get svc -n example-local
 
+proxy_example_local:
+	kubectl port-forward svc/nginx-service -n example-local 9000:9000
+
 remove_example_local_app:
 	kubectl delete -f argo/example_local.yaml
 
