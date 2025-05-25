@@ -52,10 +52,20 @@ configure_local_cluster:
 	helm install argocd argo/argo-cd --namespace argocd
 
 build_local_app:
-	docker image build -t app:v1 -f example_app/Dockerfile .
+	docker image build -t app:v1 -f example_app/Dockerfile example_app
 	docker image tag app:v1 localhost:5001/app:v1
 	docker image push localhost:5001/app:v1
 	
+deploy_example_local_app:
+	kubectl apply -f argo/example_local.yaml
+
+get_example_local_app_url:
+	kubectl get svc -n example-local
+
+remove_example_local_app:
+	kubectl delete -f argo/example_local.yaml
 
 destroy_local_cluster:
 	k3d cluster delete --config local_k3d/config.yaml
+
+
