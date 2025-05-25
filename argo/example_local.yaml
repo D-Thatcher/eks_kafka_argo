@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+ name: example-local-app
+ namespace: argocd
+spec:
+ project: default
+ source:
+   repoURL: 'https://github.com/D-Thatcher/eks_kafka_starter'
+   targetRevision: HEAD
+   path: 'k8s/example_local'
+ destination:
+   server: 'https://kubernetes.default.svc'
+   namespace: example-local
+ syncPolicy:
+   automated:
+     prune: true
+     selfHeal: true
+   syncOptions:
+   - CreateNamespace=true

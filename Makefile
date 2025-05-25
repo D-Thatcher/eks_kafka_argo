@@ -42,3 +42,20 @@ consume_messages:
 clean:
 	cd infrastructure
 	terraform destroy
+
+create_local_cluster:
+	k3d cluster create --config local_k3d/config.yaml
+
+configure_local_cluster:
+	helm repo add argo https://argoproj.github.io/argo-helm
+	kubectl create namespace argocd
+	helm install argocd argo/argo-cd --namespace argocd
+
+build_local_app:
+	docker image build -t app:v1 -f example_app/Dockerfile .
+	docker image tag app:v1 localhost:5001/app:v1
+	docker image push localhost:5001/app:v1
+	
+
+destroy_local_cluster:
+	k3d cluster delete --config local_k3d/config.yaml
